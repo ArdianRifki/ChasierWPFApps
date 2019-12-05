@@ -1,0 +1,207 @@
+﻿<Window x:Class="CRUDBC32.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRUDBC32"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="432*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="514" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Margin="2,0,0,0">
+            <TabControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.749"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.654"/>
+                </TransformGroup>
+            </TabControl.RenderTransform>
+            <TabItem Header="Supplier" Margin="0,0,-4,-2">
+                <Grid Background="#FFE5E5E5" Margin="0,-40,0,-1">
+                    <Label x:Name="label" Content="Id" HorizontalAlignment="Left" Margin="53,52,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="53,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+                    <Label x:Name="label1" Content="Name" HorizontalAlignment="Left" Margin="53,111,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="53,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="button" Content="Submit" HorizontalAlignment="Left" Margin="53,237,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="53,197,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="textBox_PreviewTextInput"/>
+                    <Label x:Name="label2" Content="Email" HorizontalAlignment="Left" Margin="53,165,0,0" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="225.938,74,0,0" VerticalAlignment="Top" Height="183" Width="253" SelectionChanged="dataGrid_SelectionChanged_1" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="button1" Content="Delete" HorizontalAlignment="Left" Margin="53,289,0,-18" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+                    <Button x:Name="button2" Content="Update" HorizontalAlignment="Left" Margin="53,262,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Item">
+                <Grid Background="#FFE5E5E5" Margin="0,5,0,-5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="485*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label3" Content="Id" HorizontalAlignment="Left" Margin="35.185,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="text_Id" HorizontalAlignment="Left" Height="23" Margin="35.185,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="1"/>
+                    <Label x:Name="label4" Content="Name" HorizontalAlignment="Left" Margin="35.185,64,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="text_Name" HorizontalAlignment="Left" Height="23" Margin="35.185,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label x:Name="label5" Content="Stock" HorizontalAlignment="Left" Margin="35.185,118,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="text_Stock" HorizontalAlignment="Left" Height="23" Margin="35.185,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <TextBox x:Name="text_Price" HorizontalAlignment="Left" Height="23" Margin="35.185,202,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label x:Name="label6" Content="Price" HorizontalAlignment="Left" Margin="38.185,172,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Margin="170.185,41,0,0" VerticalAlignment="Top" Height="195" Width="305" AutoGenerateColumns="False" SelectionChanged="dataGrid1_SelectionChanged" Grid.Column="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Stock" Binding="{Binding Stock}"/>
+                            <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Supplier" Binding="{Binding Supplier.Name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="35.185,252,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Supplier}" DisplayMemberPath= "Name" SelectedValuePath="Id" SelectionChanged="comboBox_SelectionChanged" Grid.Column="1"/>
+                    <Label x:Name="label7" Content="Supplier" HorizontalAlignment="Left" Margin="36.185,225,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.258,0.282" Grid.Column="1"/>
+                    <Button x:Name="button3" Content="Submit" HorizontalAlignment="Left" Margin="170.185,237,0,0" VerticalAlignment="Top" Width="75" Click="button3_Click" Grid.Column="1"/>
+                    <Button x:Name="button4" Content="Update" HorizontalAlignment="Left" Margin="250.185,237,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" />
+                    <Button x:Name="button5" Content="Delete" HorizontalAlignment="Left" Margin="336.185,237,0,0" VerticalAlignment="Top" Width="75" Click="button5_Click" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Transaction" Margin="2,-2,-2,0">
+                <Grid Background ="#FFE5E5E5" Margin="0,1,-4,-3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="435*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label8" Content="Transaction Id" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.075,-0.654" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="textId_transaction" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83" Grid.ColumnSpan="3"/>
+                    <Label x:Name="label9" Content="Quantity" Grid.Column="3" HorizontalAlignment="Left" Margin="77.133,59,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="text_quantity" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="77.133,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="label10" Content="Transaction Date" Grid.Column="3" HorizontalAlignment="Left" Margin="77.133,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="text_transactionId" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="77.133,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="label11" Content="Price" Grid.Column="3" HorizontalAlignment="Left" Margin="298.133,87,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="text_price" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="298.133,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="text_price_TextChanged"/>
+                    <Button x:Name="button6" Content="Submit" Grid.Column="3" HorizontalAlignment="Left" Margin="298.133,263,0,0" VerticalAlignment="Top" Width="75" Click="button6_Click"/>
+                    <ComboBox x:Name="comboBox1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Width="83" ItemsSource="{Binding Item}" DisplayMemberPath= "Name" SelectedValuePath="Id" SelectionChanged="comboBox1_SelectionChanged" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="text_total" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="298.133,227,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="text_total_TextChanged"/>
+                    <Label x:Name="label12" Content="Item" Grid.Column="1" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.401,-3.397"/>
+                    <Label x:Name="label13" Content="Total" Grid.Column="3" HorizontalAlignment="Left" Margin="298.133,201,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="text_pay" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="298.133,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="text_pay_KeyDown"/>
+                    <Label x:Name="label14" Content="Pay" Grid.Column="3" HorizontalAlignment="Left" Margin="298.133,147,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="button7" Content="Update" Grid.Column="3" HorizontalAlignment="Left" Margin="298.133,21,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="button8" Content="Delete" Grid.Column="3" HorizontalAlignment="Left" Margin="298.133,59,0,0" VerticalAlignment="Top" Width="75" Click="button8_Click"/>
+                    <DataGrid x:Name="dataGrid2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Height="157" Width="340" AutoGenerateColumns="False" Grid.ColumnSpan="3">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Transaction Date" Binding="{Binding TransactionDate}"/>
+                            <DataGridTextColumn Header="Item" Binding="{Binding Items}"/>
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                            <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Sub Total" Binding="{Binding Total}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="buttonAdd" Content="Add" Grid.Column="3" HorizontalAlignment="Left" Margin="202.133,85,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click"/>
+                    <Label Content="Change" Grid.Column="3" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TxtChange" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="214,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="79"/>
+                    <Button Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Margin="387,21,0,0" VerticalAlignment="Top" Width="38" RenderTransformOrigin="1.216,0.3"/>
+                    <TextBox x:Name="txtstk" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="364,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="61"/>
+                    <Label Content="Stock" Grid.Column="3" HorizontalAlignment="Left" Margin="387,59,0,0" VerticalAlignment="Top"/>
+                    <Button Content="X" Grid.Column="3" HorizontalAlignment="Left" Margin="44,62,0,0" VerticalAlignment="Top" Width="22" RenderTransformOrigin="-5.644,0.317" Click="Button_Click_1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Register" Margin="2,-2,-2,0">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFE21515" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background ="#FFE28F8F" Margin="0,4,-4,-6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="94*"/>
+                        <ColumnDefinition Width="312*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="txtNameRegister" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="78.804,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label Content="Name" Grid.Column="4" HorizontalAlignment="Left" Margin="78.804,28,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtEmailRegister" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="78.804,108,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                    <Label Content="Email" Grid.Column="4" HorizontalAlignment="Left" Margin="78.804,77,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name ="comboBoxRole" Grid.Column="4" HorizontalAlignment="Left" Margin="79,167,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Role}" DisplayMemberPath= "RoleName" SelectedValuePath="ID" Grid.ColumnSpan="2" SelectionChanged="ComboBoxRole_SelectionChanged_1"/>
+                    <Label Content="Role" Grid.Column="4" HorizontalAlignment="Left" Margin="79,136,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Button Content="Submit" Grid.Column="5" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="75" Background="#FF5F7E99" Click="Button_Click_2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Role" Margin="2,-2,-2,0" HorizontalAlignment="Left" Width="41">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FF478F88" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background ="#FF957979" Margin="0,1,-4,-3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="111*"/>
+                        <ColumnDefinition Width="49*"/>
+                        <ColumnDefinition Width="275*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="0,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.276,1.391" Grid.ColumnSpan="2"/>
+                    <Label Content="Name" Grid.Column="4" HorizontalAlignment="Left" Margin="39,66,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Button Content="Submit" Grid.Column="4" HorizontalAlignment="Left" Margin="24,139,0,0" VerticalAlignment="Top" Width="75" Background="#FFD67474" Grid.ColumnSpan="2"/>
+                    <Label Content="ADD ROLE" Grid.Column="4" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.54,-0.769" Grid.ColumnSpan="2">
+                        <Label.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="#FF30D0FF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Label.Background>
+                        <Label.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="#FFDE5B5B" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Label.BorderBrush>
+                    </Label>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Change Password" Margin="2,-2,-67,0" HorizontalAlignment="Left" Width="106">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FF478F88" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background ="#FF957979" Margin="0,1,-4,-3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="111*"/>
+                        <ColumnDefinition Width="49*"/>
+                        <ColumnDefinition Width="275*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Enter Old Password" Grid.Column="4" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <PasswordBox Grid.Column="3" HorizontalAlignment="Left" Margin="71,70,0,0" VerticalAlignment="Top" Width="213" Grid.ColumnSpan="3"/>
+                    <Label Content="Enter New Password" Grid.Column="4" HorizontalAlignment="Left" Margin="6,93,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <PasswordBox Grid.Column="3" HorizontalAlignment="Left" Margin="71,119,0,0" VerticalAlignment="Top" Width="213" Grid.ColumnSpan="3"/>
+                    <Label Content="Confirm Password" Grid.Column="4" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <PasswordBox Grid.ColumnSpan="3" Grid.Column="3" HorizontalAlignment="Left" Margin="71,169,0,0" VerticalAlignment="Top" Width="213"/>
+                    <Button Content="Submit" Grid.Column="4" HorizontalAlignment="Left" Margin="25,214,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="Button_Click_3"/>
+
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
